@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import GlobalContext from '../context/GlobalContext';
-import ServiceType from '../types/Service';
 
 function Services() {
   const { serviceList, setServiceList } = useContext(GlobalContext);
+  const [showPasswords, setShowPasswords] = useState(true);
 
   const deleteService = (index: number) => {
     const filteredList = serviceList.filter((_, i) => i !== index);
@@ -16,6 +16,16 @@ function Services() {
         <p>Nenhuma senha cadastrada</p>
       ) : (
         <>
+          <label htmlFor="showPasswords">
+            Esconder Senhas
+            <input
+              type="checkbox"
+              name="showPasswords"
+              id="showPasswords"
+              checked={ !showPasswords }
+              onChange={ () => setShowPasswords(!showPasswords) }
+            />
+          </label>
           {serviceList.map((service, index) => (
             <article key={ service.service }>
               <div>
@@ -27,7 +37,7 @@ function Services() {
               </div>
               <div>
                 <span>Senha: </span>
-                <span>{service.password}</span>
+                <span>{showPasswords ? service.password : '******'}</span>
               </div>
               <button
                 type="button"
