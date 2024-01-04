@@ -28,6 +28,12 @@ function Form() {
     return isValid;
   };
 
+  const passwordChecker = (regex: RegExp) => {
+    return regex.test(inputs.password)
+      ? 'valid-password-check'
+      : 'invalid-password-check';
+  };
+
   return (
     showForm ? (
       <form>
@@ -61,6 +67,20 @@ function Form() {
             onChange={ (e) => handleChange(e) }
           />
         </label>
+        <div>
+          <p className={ `${passwordChecker(/.{8,}/)}` }>
+            Possuir 8 ou mais caracteres
+          </p>
+          <p className={ `${passwordChecker(/^.{0,16}$/)}` }>
+            Possuir até 16 caracteres
+          </p>
+          <p className={ `${passwordChecker(/^(?=.*[a-zA-Z])(?=.*\d).+$/)}` }>
+            Possuir letras e números
+          </p>
+          <p className={ `${passwordChecker(/[@#$%^&+=!]/)}` }>
+            Possuir algum caractere especial
+          </p>
+        </div>
         <label htmlFor="url">
           URL
           <input
