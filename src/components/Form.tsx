@@ -1,4 +1,5 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useContext, useState } from 'react';
+import GlobalContext from '../context/GlobalContext';
 
 function Form() {
   const [showForm, setShowForm] = useState(false);
@@ -8,6 +9,7 @@ function Form() {
     password: '',
     url: '',
   });
+  const { serviceList, setServiceList } = useContext(GlobalContext);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -32,6 +34,18 @@ function Form() {
     return regex.test(inputs.password)
       ? 'valid-password-check'
       : 'invalid-password-check';
+  };
+
+  const registerService = () => {
+    const { service, login, password, url } = inputs;
+    const newService = {
+      service,
+      login,
+      password,
+      url,
+    };
+    setServiceList([...serviceList, newService]);
+    setShowForm(false);
   };
 
   return (
@@ -93,7 +107,7 @@ function Form() {
         </label>
         <button
           type="button"
-          onClick={ () => {} }
+          onClick={ registerService }
           disabled={ !formIsValid() }
         >
           Cadastrar
