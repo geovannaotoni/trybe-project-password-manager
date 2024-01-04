@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useContext, useState } from 'react';
+import Swal from 'sweetalert2';
 import GlobalContext from '../context/GlobalContext';
 
 function Form() {
@@ -48,6 +49,13 @@ function Form() {
     setServiceList([...serviceList, newService]);
     setShowForm(false);
     clearInputs();
+
+    Swal.fire({
+      title: 'Serviço cadastrado com sucesso',
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   const clearInputs = () => {
