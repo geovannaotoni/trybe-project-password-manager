@@ -46,6 +46,16 @@ function Form() {
     };
     setServiceList([...serviceList, newService]);
     setShowForm(false);
+    clearInputs();
+  };
+
+  const clearInputs = () => {
+    setInputs({
+      service: '',
+      login: '',
+      password: '',
+      url: '',
+    });
   };
 
   return (
