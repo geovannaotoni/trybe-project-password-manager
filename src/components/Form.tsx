@@ -10,6 +10,7 @@ function Form() {
     url: '',
   });
   const { serviceList, setServiceList } = useContext(GlobalContext);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -84,12 +85,19 @@ function Form() {
         <label htmlFor="password">
           Senha
           <input
-            type="password"
+            type={ showPassword ? 'text' : 'password' }
             id="password"
             name="password"
             value={ inputs.password }
             onChange={ (e) => handleChange(e) }
           />
+          <button
+            type="button"
+            data-testid="show-hide-form-password"
+            onClick={ () => setShowPassword(!showPassword) }
+          >
+            Mostrar
+          </button>
         </label>
         <div>
           <p className={ `${passwordChecker(/.{8,}/)}` }>
