@@ -1,4 +1,4 @@
-# 🔒📂 Gerenciador de Senhas - React e TypeScript
+# 🔒📂 Gerenciador de Senhas - React, TypeScript e Tailwind
 Este é um projeto de um Gerenciador de Senhas desenvolvido com React e TypeScript, no qual uma pessoa usuária pode cadastrar senhas para serviços que ela utiliza na internet, visualizar as senhas cadastradas e as informações do serviço, esconder as senhas salvas e remover os dados armazenado.
 
 ## ✅ Funcionalidades Implementadas
@@ -31,7 +31,9 @@ Os usuários podem remover senhas cadastradas individualmente, utilizando o bot�
 - Possui um botão de "Remover" para cada serviço cadastrado.
 
 ## 💻 Visualize este projeto:
-Acesse a página aqui: []()
+<img src="password-manager.gif" />
+
+Acesse a página aqui: [geovannaotoni-password-manager.surge.sh](https://geovannaotoni-password-manager.surge.sh/)
 
 ## 🔧 Instruções de Uso
 1. Clone o repositório.
