@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useContext, useState } from 'react';
 import Swal from 'sweetalert2';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import GlobalContext from '../context/GlobalContext';
 
 function Form() {
@@ -55,6 +56,8 @@ function Form() {
       icon: 'success',
       showConfirmButton: false,
       timer: 1500,
+      background: '#272A37',
+      color: '#fff',
     });
   };
 
@@ -69,45 +72,99 @@ function Form() {
 
   return (
     showForm ? (
-      <form>
-        <label htmlFor="service">
-          Nome do Serviço
-          <input
-            type="text"
-            id="service"
-            name="service"
-            value={ inputs.service }
-            onChange={ (e) => handleChange(e) }
-          />
-        </label>
-        <label htmlFor="login">
-          Login
-          <input
-            type="text"
-            id="login"
-            name="login"
-            value={ inputs.login }
-            onChange={ (e) => handleChange(e) }
-          />
-        </label>
-        <label htmlFor="password">
-          Senha
-          <input
-            type={ showPassword ? 'text' : 'password' }
-            id="password"
-            name="password"
-            value={ inputs.password }
-            onChange={ (e) => handleChange(e) }
-          />
-          <button
-            type="button"
-            data-testid="show-hide-form-password"
-            onClick={ () => setShowPassword(!showPassword) }
+      <form
+        className="rounded-md p-7
+        gap-4 items-center
+        grid grid-cols-2"
+        style={ { backgroundColor: '#1E2029' } }
+      >
+        <div className="w-96 flex flex-col">
+          <label
+            htmlFor="service"
+            className="text-gray-300 flex flex-col pb-1"
           >
-            Mostrar
-          </button>
-        </label>
-        <div>
+            Nome do Serviço
+            <input
+              type="text"
+              id="service"
+              name="service"
+              value={ inputs.service }
+              onChange={ (e) => handleChange(e) }
+              className="rounded-md bg-gray-500 p-2 text-white mt-1"
+            />
+          </label>
+          <label
+            htmlFor="login"
+            className="text-gray-300 flex flex-col  pb-1"
+          >
+            Login
+            <input
+              type="text"
+              id="login"
+              name="login"
+              value={ inputs.login }
+              onChange={ (e) => handleChange(e) }
+              className="rounded-md bg-gray-500 p-2 text-white mt-1"
+            />
+          </label>
+          <label
+            htmlFor="password"
+            className="text-gray-300 flex flex-col pb-1"
+          >
+            Senha
+            <div className="flex justify-between bg-gray-500 rounded-md">
+              <input
+                type={ showPassword ? 'text' : 'password' }
+                id="password"
+                name="password"
+                value={ inputs.password }
+                onChange={ (e) => handleChange(e) }
+                className="rounded-md bg-gray-500 p-2 text-white mt-1"
+              />
+              <button
+                type="button"
+                data-testid="show-hide-form-password"
+                onClick={ () => setShowPassword(!showPassword) }
+                className="rounded-md bg-gray-500 p-2 text-white mt-1 pr-3"
+              >
+                { showPassword ? <FaEye /> : <FaEyeSlash />}
+              </button>
+            </div>
+          </label>
+          <label
+            htmlFor="url"
+            className="text-gray-300 flex flex-col pb-1"
+          >
+            URL
+            <input
+              type="text"
+              id="url"
+              name="url"
+              value={ inputs.url }
+              onChange={ (e) => handleChange(e) }
+              className="rounded-md bg-gray-500 p-2 text-white mt-1"
+            />
+          </label>
+          <div className="flex justify-between p-5">
+            <button
+              type="button"
+              onClick={ () => setShowForm(false) }
+              className="text-blue-500 font-bold"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              onClick={ registerService }
+              disabled={ !formIsValid() }
+              className="rounded-full bg-blue-500 py-2 px-7
+              hover:bg-opacity-90 disabled:opacity-70 disabled:cursor-not-allowed"
+            >
+              Cadastrar
+            </button>
+          </div>
+        </div>
+        <div className="flex flex-col m-auto">
           <p className={ `${passwordChecker(/.{8,}/)}` }>
             Possuir 8 ou mais caracteres
           </p>
@@ -121,34 +178,12 @@ function Form() {
             Possuir algum caractere especial
           </p>
         </div>
-        <label htmlFor="url">
-          URL
-          <input
-            type="text"
-            id="url"
-            name="url"
-            value={ inputs.url }
-            onChange={ (e) => handleChange(e) }
-          />
-        </label>
-        <button
-          type="button"
-          onClick={ registerService }
-          disabled={ !formIsValid() }
-        >
-          Cadastrar
-        </button>
-        <button
-          type="button"
-          onClick={ () => setShowForm(false) }
-        >
-          Cancelar
-        </button>
       </form>
     ) : (
       <button
         type="button"
         onClick={ () => setShowForm(true) }
+        className="rounded-full bg-blue-500 py-2 px-7 hover:bg-opacity-90"
       >
         Cadastrar nova senha
       </button>
