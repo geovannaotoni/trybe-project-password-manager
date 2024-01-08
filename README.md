@@ -14,7 +14,7 @@ As senhas cadastradas podem ser visualizadas ou ocultadas usando um checkbox esp
 ### ❌ Remoção de Senhas:
 Os usuários podem remover senhas cadastradas individualmente, utilizando o botão "Remover" associado a cada serviço.
 
-#### 💡 Componentes
+## 💡 Componentes
 1. `Header.ts`
 - Elemento de cabeçalho que contém informações sobre a aplicação.
 
