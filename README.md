@@ -35,6 +35,9 @@ Os usuários podem remover senhas cadastradas individualmente, utilizando o bot�
 
 Acesse a página aqui: [geovannaotoni-password-manager.surge.sh](https://geovannaotoni-password-manager.surge.sh/)
 
+## ℹ️ Considerações finais
+Este projeto é apenas para fins educacionais. Qualquer dúvida ou sugestão, sinta-se à vontade para entrar em contato.
+
 ## 🔧 Instruções de Uso
 1. Clone o repositório.
 2. Instale as dependências utilizando `npm install`.
